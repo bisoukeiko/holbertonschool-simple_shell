@@ -11,18 +11,6 @@
 #include <string.h>
 
 /*----- Prototype -----*/
-char *get_input(char *lineptr, ssize_t *nread);
-char **get_command(char *lineptr, ssize_t nread);
-void execute(char **args);
-char *_strcpy(char *dest, char *src);
-int _strlen(char *str);
-
-
-
-
-
-
-
-
+void execute(char *command, char **args)
 
 #endif
