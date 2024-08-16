@@ -1,5 +1,5 @@
-#ifndef SHELL_H
-#define SHELL_H
+#ifndef _SHELL_H_
+#define _SHELL_H_
 
 #include <stdio.h>
 #include <stdlib.h>
@@ -9,6 +9,13 @@
 #include <sys/wait.h>
 #include <errno.h>
 
-void execute(char *command, char **args);
+/*----- Prototype -----*/
+char *get_input(char *lineptr, ssize_t *nread);
+char **get_command(char *lineptr, ssize_t nread);
+void execute(char **args);
+int count_tokens(char *lineptr_copy, const char *delim);
+char **copy_tokens(char *lineptr, char *lineptr_copy,
+			int cnt_token, const char *delim);
 
-#endif /* SHELL_H */
+
+#endif
