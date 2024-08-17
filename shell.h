@@ -13,7 +13,7 @@
 /*----- Prototype -----*/
 char *get_input(char *lineptr, ssize_t *nread);
 char **get_command(char *lineptr, ssize_t nread);
-void execute(char **args);
+void execute(char **command, char **argv);
 int count_tokens(char *lineptr_copy, const char *delim);
 char **copy_tokens(char *lineptr, char *lineptr_copy,
 			int cnt_token, const char *delim);
