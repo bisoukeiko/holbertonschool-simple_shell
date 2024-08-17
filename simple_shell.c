@@ -13,11 +13,15 @@ int main(int argc, char **argv)
 	char *prompt = "$ ";
 	char *lineptr = NULL;
 	ssize_t nread;
-	char **args;
+	char **command;
 	int index;
 
-	(void)argc;
-	(void)argv;
+	if (argc < 1)
+	{
+		fprintf(stderr, "Error: %s\n", argv[0]);
+		return (1);
+	}
+
 
 	while (1)
 	{
@@ -25,16 +29,16 @@ int main(int argc, char **argv)
 
 		lineptr = get_input(lineptr, &nread);
 
-		args = get_command(lineptr, nread);
+		command = get_command(lineptr, nread);
 
-		execute(args);
+		execute(command, argv);
 
-		for (index = 0; args[index] != NULL; index++)
+		for (index = 0; command[index] != NULL; index++)
 		{
-			free(args[index]);
+			free(command[index]);
 		}
 
-		free(args);
+		free(command);
 
 	}
 
