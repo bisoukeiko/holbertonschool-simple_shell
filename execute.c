@@ -6,7 +6,7 @@
  * Return: Nothing
  */
 
-void execute(char **args)
+void execute(char **command, char **argv)
 {
 	pid_t pid = fork();
 	int status;
@@ -14,20 +14,20 @@ void execute(char **args)
 
 	if (pid < 0)
 	{
-		perror("error:fork");
+		perror("Error: fork");
 	}
 	else if (pid == 0)
 	{
 
-		if (execve(args[0], args, NULL) == -1)
+		if (execve(command[0], command, NULL) == -1)
 		{
-			for (index = 0; args[index] != NULL; index++)
+			for (index = 0; command[index] != NULL; index++)
 			{
-				free(args[index]);
+				free(command[index]);
 			}
-			free(args);
+			free(command);
 
-			perror("error: excve");
+			perror(argv[0]);
 			exit(EXIT_FAILURE);
 		}
 	}
