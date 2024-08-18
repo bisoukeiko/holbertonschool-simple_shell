@@ -31,6 +31,11 @@ int main(int argc, char **argv)
 
 		command = get_command(lineptr, nread);
 
+		if (command[0][0] != '/')
+		{
+			command[0] = get_fullpath(command[0]);
+		}
+
 		execute(command, argv);
 
 		for (index = 0; command[index] != NULL; index++)
