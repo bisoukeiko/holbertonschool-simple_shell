@@ -36,7 +36,10 @@ int main(int argc, char **argv)
 			command[0] = get_fullpath(command[0]);
 		}
 
-		execute(command, argv);
+		if (access(command[0], X_OK) == 0)
+		{
+			execute(command, argv);
+		}
 
 		for (index = 0; command[index] != NULL; index++)
 		{
