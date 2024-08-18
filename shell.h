@@ -15,12 +15,14 @@ char *get_input(char *lineptr, ssize_t *nread);
 char **get_command(char *lineptr, ssize_t nread);
 void execute(char **command, char **argv);
 int count_tokens(char *lineptr_copy, const char *delim);
-char **copy_tokens(char *lineptr, char *lineptr_copy,
+char **tokenize_command(char *lineptr, char *lineptr_copy,
 			int cnt_token, const char *delim);
-
-
-
-
+char *get_fullpath(char *command);
+char **tokenize_path(char **path_dir);
+int store_path(char **path_dir, char *path_copy);
+char **allocate_path(int cnt_path);
+int count_path(char *path_copy);
+void free_path_dir(char **path_dir);
 
 
 #endif
