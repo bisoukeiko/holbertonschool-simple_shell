@@ -26,7 +26,7 @@ int count_tokens(char *lineptr_copy, const char *delim)
 
 
 /**
- * copy_tokens - Tokenize a command line and store each token in the array
+ * tokenize_command - Tokenize a command line and store each token in the array
  * @lineptr: A pointer to the orignal input line
  * @lineptr_copy: A pointer to the copied input line
  * @cnt_token: The total number of tokens in the input line
@@ -34,14 +34,14 @@ int count_tokens(char *lineptr_copy, const char *delim)
  * Return: A pointer to an array of strings, where each string is a token
  */
 
-char **copy_tokens(char *lineptr, char *lineptr_copy,
+char **tokenize_command(char *lineptr, char *lineptr_copy,
 			int cnt_token, const char *delim)
 {
 	char **args;
 	char *token;
 	int index;
 
-	args = malloc(sizeof(char *) * cnt_token);
+	args = malloc(sizeof(char *) * cnt_token + 1);
 	if (!args)
 	{
 		free(lineptr_copy);
@@ -64,7 +64,7 @@ char **copy_tokens(char *lineptr, char *lineptr_copy,
 			free(args);
 			free(lineptr_copy);
 			free(lineptr);
-			perror("error: malloc args[index]");
+			perror("error: mallo to the input line readc args[index]");
 			exit(EXIT_FAILURE);
 		}
 
@@ -107,7 +107,7 @@ char **get_command(char *lineptr, ssize_t nread)
 
 	strcpy(lineptr_copy, lineptr);
 
-	args = copy_tokens(lineptr, lineptr_copy, cnt_token, delim);
+	args = tokenize_command(lineptr, lineptr_copy, cnt_token, delim);
 
 	free(lineptr_copy);
 	return (args);
@@ -116,8 +116,8 @@ char **get_command(char *lineptr, ssize_t nread)
 
 /**
  * get_input - Read one line from standard input and return a pointer to it
- * @lineptr: A pointer
- * @nread: A pointer to The number of characters read
+ * @lineptr: A pointer to the input line read
+ * @nread: A pointer to the number of characters read
  * Return: A pointer to the input line read
  */
 
@@ -137,15 +137,13 @@ char *get_input(char *lineptr, ssize_t *nread)
 	{
 		free(lineptr);
 
-		if (errno == 0)
-
+		if (feof(stdin))
 		{
-			printf("\n");
 			exit(EXIT_SUCCESS);
 		}
 		else
 		{
-			perror("error: get_input");
+			perror("Error: get_input");
 			exit(EXIT_FAILURE);
 		}
 	}
