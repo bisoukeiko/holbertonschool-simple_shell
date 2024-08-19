@@ -22,13 +22,14 @@ int main(int argc, char **argv)
 		return (1);
 	}
 
-
 	while (1)
 	{
-		printf("%s", prompt);
+		if (isatty(STDIN_FILENO))
+		{
+			printf("%s", prompt);
+		}
 
 		lineptr = get_input(lineptr, &nread);
-
 		command = get_command(lineptr, nread);
 
 		if (command[0][0] != '/')
@@ -45,9 +46,7 @@ int main(int argc, char **argv)
 		{
 			free(command[index]);
 		}
-
 		free(command);
-
 	}
 
 	return (0);
