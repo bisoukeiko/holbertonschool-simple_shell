@@ -41,7 +41,7 @@ char **tokenize_command(char *lineptr, char *lineptr_copy,
 	char *token;
 	int index;
 
-	args = malloc(sizeof(char *) * cnt_token + 1);
+	args = malloc(sizeof(char *) * (cnt_token + 1));
 	if (!args)
 	{
 		free(lineptr_copy);
