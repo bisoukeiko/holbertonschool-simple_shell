@@ -32,15 +32,7 @@ int main(int argc, char **argv)
 		lineptr = get_input(lineptr, &nread);
 		command = get_command(lineptr, nread);
 
-		if (command[0][0] != '/')
-		{
-			command[0] = get_fullpath(command[0]);
-		}
-
-		if (access(command[0], X_OK) == 0)
-		{
-			execute(command, argv);
-		}
+		process_command(command, argv);
 
 		for (index = 0; command[index] != NULL; index++)
 		{
