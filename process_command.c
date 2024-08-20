@@ -10,21 +10,26 @@
 
 void process_command(char **command, char **argv)
 {
-	char *tmp_command = command[0];
+	char *full_path = NULL;
 
-	if (command[0][0] != '/')
+	if (command[0][0] != '/' && command[0][0] != '.')
 	{
-		command[0] = get_fullpath(command[0]);
+		full_path = get_fullpath(command[0]);
+	}
+	else
+	{
+		full_path = command[0];
 	}
 
-	if (!command[0])
+	if (!full_path)
 	{
-		fprintf(stderr, "%s: 1 %s: not found\n", argv[0], tmp_command);
+		fprintf(stderr, "%s: 1 %s: not found\n", argv[0], command[0]);
+		free(full_path);
 		return;
 	}
 
-	if (access(command[0], X_OK) == 0)
+	if (access(full_path, X_OK) == 0)
 	{
-		execute(command, argv);
+		execute(full_path, command, argv);
 	}
 }
