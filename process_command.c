@@ -10,9 +10,17 @@
 
 void process_command(char ** command, char **argv)
 {
+	char *tmp_command = command[0];
+
 	if (command[0][0] != '/')
 	{
 		command[0] = get_fullpath(command[0]);
+	}
+
+	if (!command[0])
+	{
+		fprintf(stderr,"%s: 1 %s: not found\n", argv[0], tmp_command);
+		return;
 	}
 
 	if (access(command[0], X_OK) == 0)
