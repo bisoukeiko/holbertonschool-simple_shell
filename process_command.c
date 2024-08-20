@@ -8,7 +8,7 @@
  * Return: Nothing
  */
 
-void process_command(char ** command, char **argv)
+void process_command(char **command, char **argv)
 {
 	char *tmp_command = command[0];
 
@@ -19,7 +19,7 @@ void process_command(char ** command, char **argv)
 
 	if (!command[0])
 	{
-		fprintf(stderr,"%s: 1 %s: not found\n", argv[0], tmp_command);
+		fprintf(stderr, "%s: 1 %s: not found\n", argv[0], tmp_command);
 		return;
 	}
 
