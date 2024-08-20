@@ -29,7 +29,6 @@ void execute(char *full_path, char **command, char **argv)
 				free(command[index]);
 			}
 			free(command);
-			free(full_path);
 
 			perror(argv[0]);
 			exit(EXIT_FAILURE);
@@ -39,4 +38,6 @@ void execute(char *full_path, char **command, char **argv)
 	{
 		wait(&status);
 	}
+
+	free(full_path);
 }
