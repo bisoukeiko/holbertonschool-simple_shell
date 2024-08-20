@@ -1,13 +1,14 @@
 #ifndef _SHELL_H_
 #define _SHELL_H_
 
+
+#include <sys/types.h>
+#include <sys/wait.h>
+#include <errno.h>
 #include <stdio.h>
 #include <stdlib.h>
 #include <unistd.h>
 #include <string.h>
-#include <sys/types.h>
-#include <sys/wait.h>
-#include <errno.h>
 
 /*----- Prototype -----*/
 char *get_input(char *lineptr, ssize_t *nread);
@@ -22,5 +23,6 @@ int store_path(char **path_dir, char *path_copy);
 char **allocate_path(int cnt_path);
 int count_path(char *path_copy);
 void free_path_dir(char **path_dir);
+void process_command(char ** command, char **argv);
 
 #endif
