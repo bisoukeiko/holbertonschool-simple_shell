@@ -60,6 +60,6 @@ char *get_fullpath(char *command)
 	}
 
 	free_path_dir(path_dir);
-	return (command);
+	return (NULL);
 }
 
