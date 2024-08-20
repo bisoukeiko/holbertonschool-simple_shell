@@ -32,7 +32,10 @@ int main(int argc, char **argv)
 		lineptr = get_input(lineptr, &nread);
 		command = get_command(lineptr, nread);
 
-		process_command(command, argv);
+		if (command && command[0])
+		{
+			process_command(command, argv);
+		}
 
 		for (index = 0; command[index] != NULL; index++)
 		{
