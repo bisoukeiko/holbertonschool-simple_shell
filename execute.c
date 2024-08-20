@@ -3,7 +3,7 @@
 /**
  * execute - Spawn a child process to execute the specified command
  *           and executes the command
- * @command: An array of command and its arguments.
+ * @command: An array of command and its arguments
  * @argv: An array containing arguments for the entire program
  * Return: Nothing
  */
