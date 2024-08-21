@@ -24,5 +24,10 @@ char **allocate_path(int cnt_path);
 int count_path(char *path_copy);
 void free_path_dir(char **path_dir);
 void process_command(char ** command, char **argv);
+int _strlen(char *str);
+char *_strcpy(char *dest, char *src);
+char *_strcat(char *dest, char *src);
+int _strcmp(char *str1, char *str2);
+char *_strdup(char *str);
 
 #endif
