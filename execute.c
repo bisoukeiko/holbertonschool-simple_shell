@@ -37,7 +37,7 @@ void execute(char *full_path, char **command, char **argv)
 	else
 	{
 		wait(&status);
+		free(full_path);
 	}
 
-	free(full_path);
 }
