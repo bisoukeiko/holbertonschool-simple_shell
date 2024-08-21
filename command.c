@@ -132,7 +132,7 @@ char *get_input(char *lineptr, ssize_t *nread)
 
 	if (*nread == -1)
 	{
-		if (isatty(STDIN_FILENO))
+	/**	if (isatty(STDIN_FILENO))
 		{
 			free(lineptr);
 			exit(EXIT_SUCCESS);
@@ -141,7 +141,9 @@ char *get_input(char *lineptr, ssize_t *nread)
 		{
 			perror("Error: get_input");
 			exit(EXIT_FAILURE);
-		}
+		}*/
+		free(lineptr);
+		exit(0);
 	}
 
 	return (lineptr);
