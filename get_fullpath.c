@@ -23,7 +23,7 @@ void free_path_dir(char **path_dir)
  * get_fullpath - Searche for the full path of a command
  * @command: The command name to search for
  * Return: A pointer to the full path of the command if found
- *         the original command if not found or an error occurs
+ *         the NULL if not found or an error occurs
  */
 
 char *get_fullpath(char *command)
@@ -37,7 +37,7 @@ char *get_fullpath(char *command)
 	{
 		for (index = 0; path_dir[index] != NULL; index++)
 		{
-			full_path = malloc(strlen(path_dir[index]) + strlen(command) + 2);
+			full_path = malloc(strlen(path_dir[index]) + _strlen(command) + 2);
 			if (!full_path)
 			{
 				perror("Error: Memory allocation for full path");

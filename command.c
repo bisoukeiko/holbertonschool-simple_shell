@@ -37,7 +37,7 @@ int count_tokens(char *lineptr_copy, const char *delim)
 char **tokenize_command(char *lineptr, char *lineptr_copy,
 			int cnt_token, const char *delim)
 {
-	char **args;
+	char **args = NULL;
 	char *token;
 	int index;
 
@@ -45,7 +45,6 @@ char **tokenize_command(char *lineptr, char *lineptr_copy,
 	if (!args)
 	{
 		free(lineptr_copy);
-		free(lineptr);
 		perror("error: malloc args");
 		exit(EXIT_FAILURE);
 	}
@@ -53,7 +52,7 @@ char **tokenize_command(char *lineptr, char *lineptr_copy,
 	token = strtok(lineptr, delim);
 	for (index = 0; token != NULL; index++)
 	{
-		args[index] = malloc(sizeof(char) * (strlen(token) + 1));
+		args[index] = malloc(sizeof(char) * (_strlen(token) + 1));
 		if (!args[index])
 		{
 			while (--index >= 0)
@@ -63,12 +62,11 @@ char **tokenize_command(char *lineptr, char *lineptr_copy,
 
 			free(args);
 			free(lineptr_copy);
-			free(lineptr);
 			perror("error: mallo to the input line readc args[index]");
 			exit(EXIT_FAILURE);
 		}
 
-		strcpy(args[index], token);
+		_strcpy(args[index], token);
 		token = strtok(NULL, delim);
 	}
 
@@ -96,16 +94,15 @@ char **get_command(char *lineptr, ssize_t nread)
 	lineptr_copy = malloc(sizeof(char) * (nread + 1));
 	if (!lineptr_copy)
 	{
-		free(lineptr);
 		perror("error malloc lineptr_copy");
 		exit(EXIT_FAILURE);
 	}
 
-	strcpy(lineptr_copy, lineptr);
+	_strcpy(lineptr_copy, lineptr);
 
 	cnt_token = count_tokens(lineptr_copy, delim);
 
-	strcpy(lineptr_copy, lineptr);
+	_strcpy(lineptr_copy, lineptr);
 
 	args = tokenize_command(lineptr, lineptr_copy, cnt_token, delim);
 
@@ -127,7 +124,6 @@ char *get_input(char *lineptr, ssize_t *nread)
 
 	if (lineptr)
 	{
-		free(lineptr);
 		lineptr = NULL;
 	}
 
@@ -135,9 +131,7 @@ char *get_input(char *lineptr, ssize_t *nread)
 
 	if (*nread == -1)
 	{
-		free(lineptr);
-
-		if (feof(stdin))
+		if (isatty(STDIN_FILENO))
 		{
 			exit(EXIT_SUCCESS);
 		}
