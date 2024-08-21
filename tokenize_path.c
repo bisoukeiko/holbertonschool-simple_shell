@@ -99,7 +99,7 @@ char **tokenize_path(char **path_dir)
 		return (NULL);
 	}
 
-	path_copy = strdup(path);
+	path_copy = _strdup(path);
 	if (!path_copy)
 	{
 		perror("Error: Memory allocation for path");
@@ -112,7 +112,7 @@ char **tokenize_path(char **path_dir)
 	if (!path_dir)
 		return (NULL);
 
-	path_copy = strdup(path);
+	path_copy = _strdup(path);
 	if (!path_copy)
 	{
 		perror("Error: Memory allocation for path");
