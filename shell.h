@@ -24,7 +24,7 @@ int store_path(char **path_dir, char *path_copy);
 char **allocate_path(int cnt_path);
 int count_path(char *path_copy);
 void free_path_dir(char **path_dir);
-void process_command(char ** command, char **argv);
+void process_command(char **command, char **argv);
 int _strlen(char *str);
 char *_strcpy(char *dest, char *src);
 char *_strcat(char *dest, char *src);
