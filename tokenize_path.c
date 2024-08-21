@@ -59,7 +59,7 @@ int store_path(char **path_dir, char *path_copy)
 
 	while (token)
 	{
-		path_dir[index] = strdup(token);
+		path_dir[index] = _strdup(token);
 		if (!path_dir[index])
 		{
 			perror("Error: Memory allocation for token");

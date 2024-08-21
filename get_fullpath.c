@@ -37,7 +37,7 @@ char *get_fullpath(char *command)
 	{
 		for (index = 0; path_dir[index] != NULL; index++)
 		{
-			full_path = malloc(strlen(path_dir[index]) + _strlen(command) + 2);
+			full_path = malloc(_strlen(path_dir[index]) + _strlen(command) + 2);
 			if (!full_path)
 			{
 				perror("Error: Memory allocation for full path");
@@ -45,9 +45,9 @@ char *get_fullpath(char *command)
 				return (NULL);
 			}
 
-			strcpy(full_path, path_dir[index]);
-			strcat(full_path, "/");
-			strcat(full_path, command);
+			_strcpy(full_path, path_dir[index]);
+			_strcat(full_path, "/");
+			_strcat(full_path, command);
 
 			if (access(full_path, X_OK) == 0)
 			{
