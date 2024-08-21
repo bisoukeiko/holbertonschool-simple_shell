@@ -6,10 +6,11 @@
  * @full_path: A pointer to full path command
  * @command: An array of command and its arguments
  * @argv: An array containing arguments for the entire program
+ * @fg: flag 0 for fullpath
  * Return: Nothing
  */
 
-void execute(char *full_path, char **command, char **argv)
+void execute(char *full_path, char **command, char **argv, int fg)
 {
 	pid_t pid = fork();
 	int status;
@@ -37,7 +38,10 @@ void execute(char *full_path, char **command, char **argv)
 	else
 	{
 		wait(&status);
-		free(full_path);
+		if (fg == 0)
+		{
+			free(full_path);
+		}
 	}
 
 }
