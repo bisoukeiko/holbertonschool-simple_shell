@@ -123,27 +123,10 @@ char *get_input(char *lineptr, ssize_t *nread)
 {
 	size_t buffer = 0;
 
-	/**
-	if (lineptr)
-	{
-		lineptr = NULL;
-	}
-	*/
-
 	*nread = getline(&lineptr, &buffer, stdin);
 
 	if (*nread == -1)
 	{
-	/**	if (isatty(STDIN_FILENO))
-		{
-			free(lineptr);
-			exit(EXIT_SUCCESS);
-		}
-		else
-		{
-			perror("Error: get_input");
-			exit(EXIT_FAILURE);
-		}*/
 		free(lineptr);
 		exit(0);
 	}

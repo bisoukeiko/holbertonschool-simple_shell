@@ -9,6 +9,7 @@
 #include <stdlib.h>
 #include <unistd.h>
 #include <string.h>
+#include <limits.h>
 
 /*----- Prototype -----*/
 char *get_input(char *lineptr, ssize_t *nread);
