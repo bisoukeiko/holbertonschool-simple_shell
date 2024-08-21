@@ -37,6 +37,22 @@ The shell supports various standard shell commands, including and not limited to
 - echo          Display a message
 - exit          Exit the progam
 
+.SH ENVIRONMENT
+HOME
+	The user’s home directory. Used to determine the base directory for commands like cd.
+
+PATH
+	A colon-separated (:) list of directories that the shell searches to find executable commands.
+
+SHELL
+	The absolute path of the current shell. Used for shell re-invocations.
+
+USER
+	The name of the current user. Used by various commands and scripts to customize their behavior.
+
+PWD
+	The current working directory. Updated by the shell after each directory change.
+
 .SH EXAMPLES
 
 gcc -Wall -Werror -Wextra -pedantic -std=gnu89 *.c -o hsh
