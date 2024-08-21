@@ -94,6 +94,7 @@ char **get_command(char *lineptr, ssize_t nread)
 	lineptr_copy = malloc(sizeof(char) * (nread + 1));
 	if (!lineptr_copy)
 	{
+		free(lineptr);
 		perror("error malloc lineptr_copy");
 		exit(EXIT_FAILURE);
 	}
@@ -133,6 +134,7 @@ char *get_input(char *lineptr, ssize_t *nread)
 	{
 		if (isatty(STDIN_FILENO))
 		{
+			free(lineptr);
 			exit(EXIT_SUCCESS);
 		}
 		else
