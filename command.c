@@ -44,12 +44,13 @@ char **tokenize_command(char *lineptr, char *lineptr_copy,
 	args = malloc(sizeof(char *) * (cnt_token + 1));
 	if (!args)
 	{
+		free(lineptr);
 		free(lineptr_copy);
 		perror("error: malloc args");
 		exit(EXIT_FAILURE);
 	}
 
-	token = strtok(lineptr, delim);
+	token = strtok(lineptr_copy, delim);
 	for (index = 0; token != NULL; index++)
 	{
 		args[index] = malloc(sizeof(char) * (_strlen(token) + 1));
@@ -61,6 +62,7 @@ char **tokenize_command(char *lineptr, char *lineptr_copy,
 			}
 
 			free(args);
+			free(lineptr);
 			free(lineptr_copy);
 			perror("error: mallo to the input line readc args[index]");
 			exit(EXIT_FAILURE);
@@ -107,6 +109,7 @@ char **get_command(char *lineptr, ssize_t nread)
 
 	args = tokenize_command(lineptr, lineptr_copy, cnt_token, delim);
 
+	free(lineptr);
 	free(lineptr_copy);
 	return (args);
 }
