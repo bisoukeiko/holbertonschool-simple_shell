@@ -19,7 +19,7 @@ void process_command(char **command, char **argv)
 
 		if (!full_path)
 		{
-			fprintf(stderr, "%s: 1 %s: not found\n", argv[0], command[0]);
+			fprintf(stderr, "%s: 1: %s: not found\n", argv[0], command[0]);
 			return;
 		}
 
