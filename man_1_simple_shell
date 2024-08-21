@@ -1,0 +1,64 @@
+.TH SIMPLE_SHELL(1)                User Commands                SIMPLE_SHELL(1)         18/08/2024
+
+.SH NAME
+simple_shell — command interpreter (shell)
+
+.SH SYNOPSIS
+simple_shell [-aCefnuvxIimqVEbp] [+aCefnuvxIimqVEbp] [-o option_name] [+o option_name]
+                [command_file [argument ...]]
+simple_shell -c [-aCefnuvxIimqVEbp] [+aCefnuvxIimqVEbp] [-o option_name] [+o option_name]
+                command_string [command_name [argument ...]]
+simple_shell -s [-aCefnuvxIimqVEbp] [+aCefnuvxIimqVEbp] [-o option_name] [+o option_name]
+                [argument ...]
+
+.SH DESCRIPTION
+The simple_shell project involves creating a POSIX-compliant command interpreter capable of executing commands read from a command string, standard input, or a specified file.
+
+.SH OPTIONS
+       -c command
+              Executes the specified command.
+
+       -i     Enables interactive mode.
+
+       -v     Displays the shell version.
+
+       -h     Displays help or available options.
+
+       -s script
+              Executes the specified script.
+
+.SH COMMANDS
+The shell supports various standard shell commands, including and not limited to:
+
+- cd            Change directory
+- ls            List directory contents
+- ls -l         Give a detail for the content of the directory
+- pwd           Print current working directory
+- echo          Display a message
+- exit          Exit the progam
+
+.SH EXAMPLES
+
+gcc -Wall -Werror -Wextra -pedantic -std=gnu89 *.c -o hsh
+./hsh
+$ ls
+AUTHORS    command.c  get_fullpath.c  man_1_simple_shell  shell.h         tokenize_path.c
+README.md  execute.c  hsh             process_command.c   simple_shell.c
+$ echo Thank you for aspiring to be a future programmer !
+Thank you for aspiring to be a future programmer !
+$ cd
+$ pwd
+/home/user/holbertonschool-simple_shell
+$ exit
+
+
+.SH BUGS
+No know bugs
+
+.SH AUTHORS
+
+Bisou Keiko
+Farina Guillaume
+
+.SH SEE ALSO
+Real simple_shell man page.
