@@ -34,3 +34,17 @@ void func_env(void)
 		printf("%s\n", environ[index]);
 	}
 }
+
+
+/**
+ * func_ctrlC - shell should not quit with ctrl+C
+ * @signum: The signal number
+ * Return: Nothing
+ */
+
+void func_ctrlC(int signum)
+{
+	(void)signum;
+	write(STDIN_FILENO, "\n$ ", 3);
+}
+

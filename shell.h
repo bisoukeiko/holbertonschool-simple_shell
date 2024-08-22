@@ -10,6 +10,7 @@
 #include <unistd.h>
 #include <string.h>
 #include <limits.h>
+#include <signal.h>
 
 /*----- Prototype -----*/
 char *get_input(char *lineptr, ssize_t *nread);
@@ -33,6 +34,7 @@ char *_strdup(char *str);
 void func_env(void);
 void func_exit(char **command);
 char *_getenv(char *name);
+void func_ctrlC(int signum);
 
 /*---------------------*/
 

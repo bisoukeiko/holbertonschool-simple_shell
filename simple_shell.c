@@ -22,6 +22,8 @@ int main(int argc, char **argv)
 		return (1);
 	}
 
+	signal(SIGINT, func_ctrlC);
+
 	while (1)
 	{
 		if (isatty(STDIN_FILENO))
