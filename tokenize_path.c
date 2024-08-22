@@ -1,6 +1,33 @@
 #include "shell.h"
 
 /**
+ * _getenv - Searche for the environment string pointed to
+ *            by name in the list of environment variables
+ * @name: The name of the specified variable
+ * Return: A pointer to the string that contains the value of
+ *         that environment variable
+ */
+
+char *_getenv(char *name)
+{
+	char **env = environ;
+	size_t name_len = _strlen(name);
+
+	while (*env)
+	{
+		if (strncmp(*env, name, name_len) == 0 &&
+			(*env)[name_len] == '=')
+		{
+			return (*env + name_len + 1);
+		}
+
+		env++;
+	}
+
+	return (NULL);
+}
+
+/**
  * count_path - Count the number of directories in PATH
  * @path_copy: PATH directories
  * Return: The number of directories in PATH
@@ -89,7 +116,7 @@ int store_path(char **path_dir, char *path_copy)
 
 char **tokenize_path(char **path_dir)
 {
-	char *path = getenv("PATH");
+	char *path = _getenv("PATH");
 	char *path_copy;
 	int cnt_path;
 
