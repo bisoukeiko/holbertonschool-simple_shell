@@ -6,7 +6,7 @@
  * @full_path: A pointer to full path command
  * @command: An array of command and its arguments
  * @argv: An array containing arguments for the entire program
- * @fg: flag 0 for fullpath
+ * @fg: flag 1 for fullpath
  * Return: Nothing
  */
 
@@ -38,7 +38,7 @@ void execute(char *full_path, char **command, char **argv, int fg)
 	else
 	{
 		wait(&status);
-		if (fg == 0)
+		if (fg == 1)
 		{
 			free(full_path);
 		}

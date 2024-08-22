@@ -32,7 +32,7 @@ int _strcmp(char *str1, char *str2);
 char *_strdup(char *str);
 void func_env(void);
 void func_exit(char **command);
-
+char *_getenv(char *name);
 
 /*---------------------*/
 
