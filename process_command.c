@@ -14,9 +14,7 @@ void process_command(char **command, char **argv)
 	int fg;
 
 	if (_strcmp(command[0], "exit") == 0)
-	{
 		func_exit(command);
-	}
 
 	if (_strcmp(command[0], "env") == 0)
 	{
@@ -27,11 +25,9 @@ void process_command(char **command, char **argv)
 	if (command[0][0] != '/' && command[0][0] != '.')
 	{
 		full_path = get_fullpath(command[0]);
-
 		if (!full_path)
 		{
 			fprintf(stderr, "%s: 1: %s: not found\n", argv[0], command[0]);
-			exit(127);
 			return;
 		}
 
@@ -47,6 +43,11 @@ void process_command(char **command, char **argv)
 		{
 			fg = 0;
 			execute(command[0], command, argv, fg);
+		}
+		else
+		{
+			fprintf(stderr, "%s: 1: %s: not found\n", argv[0], command[0]);
+			return;
 		}
 	}
 }
