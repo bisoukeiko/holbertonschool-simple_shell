@@ -36,7 +36,6 @@ void func_exit(char **command);
 char *_getenv(char *name);
 void func_notfound(char *full_path, char **command);
 void func_ctrlC(int signum);
-void func_exit(char **command);
 
 /*---------------------*/
 
