@@ -46,7 +46,6 @@ void process_command(char **command, char **argv)
 		else
 		{
 			fprintf(stderr, "%s: 1: %s: not found\n", argv[0], command[0]);
-			exit(127);
 			return;
 		}
 	}
