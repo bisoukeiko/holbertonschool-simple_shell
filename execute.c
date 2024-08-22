@@ -23,7 +23,7 @@ void execute(char *full_path, char **command, char **argv, int fg)
 	else if (pid == 0)
 	{
 
-		if (execve(full_path, command, NULL) == -1)
+		if (execve(full_path, command, environ) == -1)
 		{
 			for (index = 0; command[index] != NULL; index++)
 			{

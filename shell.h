@@ -31,4 +31,9 @@ char *_strcat(char *dest, char *src);
 int _strcmp(char *str1, char *str2);
 char *_strdup(char *str);
 
+
+/*---------------------*/
+
+extern char **environ;
+
 #endif
