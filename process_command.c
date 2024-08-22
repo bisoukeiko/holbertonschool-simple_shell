@@ -26,24 +26,6 @@ void func_notfound(char *full_path, char **command)
 }
 
 /**
- * func_exit - Handle the exit built-in command
- * @command: An array of command and its arguments
- * Return: Nothing
- */
-void func_exit(char **command)
-{
-    int index;
-
-    for (index = 0; command[index] != NULL; index++)
-    {
-        free(command[index]);
-    }
-    free(command);
-
-    exit(0);
-}
-
-/**
  * process_command - Check the full path of the command and
  *                   run it if it is executable
  * @command: An array of command and its arguments
