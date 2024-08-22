@@ -13,6 +13,17 @@ void process_command(char **command, char **argv)
 	char *full_path = NULL;
 	int fg;
 
+	if (_strcmp(command[0], "exit") == 0)
+	{
+		func_exit(command);
+	}
+
+	if (_strcmp(command[0], "env") == 0)
+	{
+		func_env();
+		return;
+	}
+
 	if (command[0][0] != '/' && command[0][0] != '.')
 	{
 		full_path = get_fullpath(command[0]);
