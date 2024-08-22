@@ -11,7 +11,7 @@
 void process_command(char **command, char **argv)
 {
 	char *full_path = NULL;
-	int fg;
+	int fg = 0;
 
 	if (_strcmp(command[0], "exit") == 0)
 		func_exit(command);
@@ -41,12 +41,12 @@ void process_command(char **command, char **argv)
 	{
 		if (access(command[0], X_OK) == 0)
 		{
-			fg = 0;
 			execute(command[0], command, argv, fg);
 		}
 		else
 		{
 			fprintf(stderr, "%s: 1: %s: not found\n", argv[0], command[0]);
+			exit(127);
 			return;
 		}
 	}
