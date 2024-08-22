@@ -33,7 +33,7 @@ Authors
 
 - Working environment `Ubuntu 20.04 using GCC options -Wall -Werror -Wextra -pedantic -std=gnu89`
 - Checker `Betty`
-- Header file `Simple_Shell.h`
+- Header file `Shell.h`
 - Allowed editors `vi, vim, emacs`
 - Compiler `GCC`
 - All your files should `end with a new line`
