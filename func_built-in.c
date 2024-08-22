@@ -16,7 +16,7 @@ void func_exit(char **command)
 	}
 	free(command);
 
-	exit(EXIT_SUCCESS);
+	exit(0);
 }
 
 
