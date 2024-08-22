@@ -1,6 +1,31 @@
 #include "shell.h"
 
 /**
+ * func_notfound - free memorys and exit programme
+ * @full_path: full path of the command
+ * @command: An array of command and its arguments
+ * Return: Noting
+ */
+
+void func_notfound(char *full_path, char **command)
+{
+	int index;
+
+	if (full_path)
+	{
+		free(full_path);
+	}
+
+	for (index = 0; command[index] != NULL; index++)
+	{
+		free(command[index]);
+	}
+	free(command);
+
+	exit(127);
+}
+
+/**
  * process_command - Check the full path of the command and
  *                   run it if it is executable
  * @command: An array of command and its arguments
@@ -28,7 +53,7 @@ void process_command(char **command, char **argv)
 		if (!full_path)
 		{
 			fprintf(stderr, "%s: 1: %s: not found\n", argv[0], command[0]);
-			return;
+			func_notfound(full_path, command);
 		}
 
 		if (access(full_path, X_OK) == 0)
@@ -46,7 +71,7 @@ void process_command(char **command, char **argv)
 		else
 		{
 			fprintf(stderr, "%s: 1: %s: not found\n", argv[0], command[0]);
-			return;
+			func_notfound(NULL, command);
 		}
 	}
 }

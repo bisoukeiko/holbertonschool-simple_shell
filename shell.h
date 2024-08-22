@@ -34,6 +34,7 @@ char *_strdup(char *str);
 void func_env(void);
 void func_exit(char **command);
 char *_getenv(char *name);
+void func_notfound(char *full_path, char **command);
 void func_ctrlC(int signum);
 
 /*---------------------*/
