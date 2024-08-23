@@ -129,6 +129,13 @@ Run the executable:
 
 `tokenize_path` - Tokenize directories from the PATH.
 
+`func_exit` - Exit the shell.
+
+`func_env` - Prints the current environment.
+
+`func_ctrlC` - Shell should not quit with ctrl+C.
+
+`_getenv` - Search for the environment string.
 
 ## Test function interactive mode
 
@@ -162,7 +169,7 @@ $ echo "/bin/ls" | ./hsh
 ````
 ~/holbertonschool-simple_shell$ echo "/bin/ls"  | ./hsh
 AUTHORS     command.c   get_fullpath.c  process_command.c   simple_shell.c  README.md
-execute.c   hsh     shell.h     tokenize_path.c
+execute.c   hsh   shell.h   tokenize_path.c   string_func.c   man_1_simple_shell  func_built-in.c
 ``````
 ## Flowchart
 
