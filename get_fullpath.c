@@ -57,9 +57,10 @@ char *get_fullpath(char *command)
 
 			free(full_path);
 		}
+
+		free_path_dir(path_dir);
 	}
 
-	free_path_dir(path_dir);
 	return (NULL);
 }
 
