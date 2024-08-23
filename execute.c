@@ -32,7 +32,7 @@ void execute(char *full_path, char **command, char **argv, int fg)
 			free(command);
 
 			perror(argv[0]);
-			exit(2);
+			exit(EXIT_FAILURE);
 		}
 	}
 	else
