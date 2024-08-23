@@ -16,7 +16,7 @@ void func_exit(char **command)
 	}
 	free(command);
 
-	exit(EXIT_SUCCESS);
+	exit(2);
 }
 
 
@@ -45,6 +45,8 @@ void func_env(void)
 void func_ctrlC(int signum)
 {
 	(void)signum;
+
 	write(STDIN_FILENO, "\n$ ", 3);
+
 }
 
