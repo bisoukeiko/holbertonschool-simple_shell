@@ -122,7 +122,6 @@ char **tokenize_path(char **path_dir)
 
 	if (!path)
 	{
-		perror("Error: PATH");
 		return (NULL);
 	}
 
